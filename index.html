@@ -506,7 +506,7 @@ function showQ() {
   expWrap.classList.remove('show');
   expWrap.innerHTML = '';
   document.getElementById('btn-next-wrap').style.display = 'none';
-  document.getElementById('btn-skip-wrap').style.display = '';
+  document.getElementById('btn-skip-wrap').style.display = 'block';
   document.getElementById('finish-screen').style.display = 'none';
 
   const pct = Math.round(qIdx / queue.length * 100);
@@ -567,7 +567,7 @@ function checkAnswer(q, sel) {
     expWrap.classList.add('show');
   });
 
-  document.getElementById('btn-next-wrap').style.display = '';
+  document.getElementById('btn-next-wrap').style.display = 'block';
   document.getElementById('btn-skip-wrap').style.display = 'none';
 
   // Auto scroll to show explanation
