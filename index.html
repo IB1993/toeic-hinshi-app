@@ -171,6 +171,34 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .lb-ng{background:var(--red-l);color:var(--red);}
 .lb-no{background:var(--gray-l);color:var(--text2);}
 
+
+/* Hint */
+#hint-wrap{margin:0 12px 8px;}
+#hint-btn{width:100%;padding:11px 14px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:11px;
+  font-size:.88rem;font-weight:700;color:#0369a1;cursor:pointer;font-family:inherit;text-align:left;
+  display:flex;align-items:center;gap:8px;}
+#hint-btn:active{background:#e0f2fe;}
+#hint-box{display:none;margin-top:8px;background:#e0f2fe;border-radius:10px;padding:11px 13px;
+  font-size:.85rem;line-height:1.7;color:#075985;}
+#hint-box.show{display:block;}
+/* Bold in explanation */
+.exp-body b{color:#92400e;font-weight:800;}
+.exp-body .ans-bold{color:#0369a1;font-weight:800;}
+
+
+/* Hint */
+#hint-wrap{margin:0 12px 8px;}
+#hint-btn{width:100%;padding:11px 14px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:11px;
+  font-size:.88rem;font-weight:700;color:#0369a1;cursor:pointer;font-family:inherit;text-align:left;
+  display:flex;align-items:center;gap:8px;}
+#hint-btn:active{background:#e0f2fe;}
+#hint-box{display:none;margin-top:8px;background:#e0f2fe;border-radius:10px;padding:11px 13px;
+  font-size:.85rem;line-height:1.7;color:#075985;}
+#hint-box.show{display:block;}
+/* Bold in explanation */
+.exp-body b{color:#92400e;font-weight:800;}
+.exp-body .ans-bold{color:#0369a1;font-weight:800;}
+
 /* ── STATS ── */
 #stats-screen{background:#f1f5f9;padding:14px 12px;}
 .s-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
@@ -257,6 +285,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
       <div class="q-text" id="q-text"></div>
     </div>
     <div class="choices" id="choices"></div>
+    <div id="hint-wrap">
+      <button id="hint-btn" onclick="showHint()">&#128161; ヒントを見る</button>
+      <div id="hint-box"></div>
+    </div>
+    <div id="hint-wrap">
+      <button id="hint-btn" onclick="showHint()">&#128161; ヒントを見る</button>
+      <div id="hint-box"></div>
+    </div>
     <div id="exp-wrap"><!-- explanation injected here --></div>
     <div id="btn-next-wrap"><button id="btn-next" onclick="nextQ()">次の問題 &#8594;</button></div>
     <div id="btn-skip-wrap"><button id="btn-skip" onclick="skipQ()">スキップ</button></div>
@@ -508,6 +544,7 @@ function showQ() {
   document.getElementById('btn-next-wrap').style.display = 'none';
   document.getElementById('btn-skip-wrap').style.display = 'block';
   document.getElementById('finish-screen').style.display = 'none';
+  resetHint();
 
   const pct = Math.round(qIdx / queue.length * 100);
   document.getElementById('qz-fill').style.width = pct + '%';
@@ -560,13 +597,15 @@ function checkAnswer(q, sel) {
       '<span class="aw">('+q.answer+') '+esc(q.answer_word)+'</span>' +
       '<span class="ao">(A)'+esc(q.A)+'&nbsp;(B)'+esc(q.B)+'&nbsp;(C)'+esc(q.C)+'&nbsp;(D)'+esc(q.D)+'</span>' +
     '</div>' +
-    '<div class="exp-body"><span class="exp-lbl">&#128218; 解説</span>'+esc(q.explanation)+'</div>';
+    '<div class="exp-body"><span class="exp-lbl">&#128218; 解説</span>'+formatExp(q.explanation, q)+'</div>';
 
   // Slide in
   requestAnimationFrame(() => {
     expWrap.classList.add('show');
   });
 
+  hideHintAfterAnswer();
+  hideHintAfterAnswer();
   document.getElementById('btn-next-wrap').style.display = 'block';
   document.getElementById('btn-skip-wrap').style.display = 'none';
 
@@ -698,6 +737,106 @@ function resetAll() {
     renderStats(); renderHome();
     alert('リセットしました');
   }
+}
+
+
+// ── Hint ─────────────────────────────────────────────────
+function getHint(explanation) {
+  if (!explanation) return '';
+  // First sentence up to 。or first 80 chars
+  const dot = explanation.indexOf('。');
+  const first = dot > 0 && dot < 120 ? explanation.substring(0, dot + 1) : explanation.substring(0, 90) + '…';
+  return first;
+}
+
+function showHint() {
+  const box = document.getElementById('hint-box');
+  box.classList.add('show');
+  document.getElementById('hint-btn').style.display = 'none';
+  // Get current question explanation
+  if (qIdx < queue.length) {
+    const q = queue[qIdx];
+    box.textContent = getHint(q.explanation);
+  }
+}
+
+function resetHint() {
+  document.getElementById('hint-btn').style.display = '';
+  document.getElementById('hint-btn').textContent = '';
+  document.getElementById('hint-btn').innerHTML = '&#128161; ヒントを見る';
+  const box = document.getElementById('hint-box');
+  box.classList.remove('show');
+  box.textContent = '';
+  document.getElementById('hint-wrap').style.display = '';
+}
+
+function hideHintAfterAnswer() {
+  document.getElementById('hint-wrap').style.display = 'none';
+}
+
+// ── Format explanation with bold ──────────────────────────
+function formatExp(text, q) {
+  let s = esc(text);
+  // Bold the answer word (first occurrence)
+  const aw = esc(q.answer_word);
+  if (aw) s = s.replace(aw, '<b class="ans-bold">' + aw + '</b>');
+  // Bold (A)(B)(C)(D) choice references
+  s = s.replace(/\(([ABCD])\)/g, '(<b>$1</b>)');
+  // Bold text in 「」
+  s = s.replace(/「([^」]{1,30})」/g, '「<b>$1</b>」');
+  // Bold text in【】
+  s = s.replace(/【([^】]{1,30})】/g, '【<b>$1</b>】');
+  return s;
+}
+
+
+// ── Hint ─────────────────────────────────────────────────
+function getHint(explanation) {
+  if (!explanation) return '';
+  // First sentence up to 。or first 80 chars
+  const dot = explanation.indexOf('。');
+  const first = dot > 0 && dot < 120 ? explanation.substring(0, dot + 1) : explanation.substring(0, 90) + '…';
+  return first;
+}
+
+function showHint() {
+  const box = document.getElementById('hint-box');
+  box.classList.add('show');
+  document.getElementById('hint-btn').style.display = 'none';
+  // Get current question explanation
+  if (qIdx < queue.length) {
+    const q = queue[qIdx];
+    box.textContent = getHint(q.explanation);
+  }
+}
+
+function resetHint() {
+  document.getElementById('hint-btn').style.display = '';
+  document.getElementById('hint-btn').textContent = '';
+  document.getElementById('hint-btn').innerHTML = '&#128161; ヒントを見る';
+  const box = document.getElementById('hint-box');
+  box.classList.remove('show');
+  box.textContent = '';
+  document.getElementById('hint-wrap').style.display = '';
+}
+
+function hideHintAfterAnswer() {
+  document.getElementById('hint-wrap').style.display = 'none';
+}
+
+// ── Format explanation with bold ──────────────────────────
+function formatExp(text, q) {
+  let s = esc(text);
+  // Bold the answer word (first occurrence)
+  const aw = esc(q.answer_word);
+  if (aw) s = s.replace(aw, '<b class="ans-bold">' + aw + '</b>');
+  // Bold (A)(B)(C)(D) choice references
+  s = s.replace(/\(([ABCD])\)/g, '(<b>$1</b>)');
+  // Bold text in 「」
+  s = s.replace(/「([^」]{1,30})」/g, '「<b>$1</b>」');
+  // Bold text in【】
+  s = s.replace(/【([^】]{1,30})】/g, '【<b>$1</b>】');
+  return s;
 }
 
 // ── Init ─────────────────────────────────────────────────
