@@ -19,24 +19,20 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;background:#f1f5f9;color:var(--text);}
 
-/* Header */
 #hdr{position:fixed;top:0;left:0;right:0;height:var(--hdr);background:var(--blue);color:white;display:flex;align-items:center;padding:0 16px;gap:10px;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);}
 #hdr-back{background:none;border:none;color:white;font-size:1.3rem;padding:6px 8px;cursor:pointer;display:none;}
 #hdr-title{font-size:1rem;font-weight:700;flex:1;}
-#hdr-sub{font-size:.72rem;opacity:.8;}
 
-/* Bottom Nav */
 #nav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav) + var(--safe));background:white;border-top:1px solid var(--border);display:flex;z-index:100;}
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:none;cursor:pointer;padding-bottom:var(--safe);font-size:.65rem;color:var(--text2);padding-top:8px;}
 .nav-btn .ico{font-size:1.4rem;line-height:1;}
 .nav-btn.active{color:var(--blue);}
 
-/* Screens */
 #screens{position:fixed;top:var(--hdr);bottom:calc(var(--nav) + var(--safe));left:0;right:0;overflow:hidden;}
 .screen{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;}
 .screen.active{display:block;}
 
-/* ── HOME ── */
+/* HOME */
 #home-screen{background:#f1f5f9;}
 .hero{background:var(--blue);color:white;padding:18px 16px 22px;}
 .hero h2{font-size:1rem;margin-bottom:12px;opacity:.9;}
@@ -63,7 +59,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .gc-fill{height:100%;border-radius:99px;}
 .gc-rate{font-size:.68rem;color:var(--text2);}
 
-/* ── CATEGORY DETAIL ── */
+/* CATEGORY DETAIL */
 #cat-detail{background:#f1f5f9;}
 .dh{background:white;padding:13px 16px;border-bottom:1px solid var(--border);}
 .dh-name{font-size:1.05rem;font-weight:700;margin-bottom:3px;}
@@ -77,25 +73,30 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .si-count{font-size:.72rem;color:var(--text2);}
 .si-badge{padding:3px 10px;border-radius:99px;font-size:.7rem;font-weight:700;}
 
-/* ── QUIZ ── */
+/* QUIZ */
 #quiz-screen{background:#f1f5f9;}
-
-/* Progress bar */
 .qz-top{padding:10px 14px 6px;display:flex;align-items:center;gap:10px;}
-.qz-prog-track{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
-.qz-prog-fill{height:100%;background:var(--blue);border-radius:99px;transition:width .3s;}
-.qz-prog-txt{font-size:.75rem;color:var(--text2);white-space:nowrap;}
-.qz-mode-badge{font-size:.68rem;background:var(--blue-l);color:var(--blue);padding:2px 8px;border-radius:99px;font-weight:700;white-space:nowrap;}
+.qz-track{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+.qz-fill{height:100%;background:var(--blue);border-radius:99px;transition:width .3s;}
+.qz-txt{font-size:.75rem;color:var(--text2);white-space:nowrap;}
+.qz-badge{font-size:.68rem;padding:2px 8px;border-radius:99px;font-weight:700;white-space:nowrap;}
 
-/* Question card */
 .q-card{margin:0 12px 10px;background:white;border-radius:var(--radius);padding:16px 16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.08);position:relative;}
-/* Star in corner */
-.q-star{position:absolute;top:12px;right:12px;font-size:1.3rem;cursor:pointer;line-height:1;color:#d1d5db;transition:color .15s,transform .15s;background:none;border:none;padding:4px;}
-.q-star.starred{color:var(--amber);}
+.q-star{position:absolute;top:11px;right:11px;font-size:1.25rem;cursor:pointer;line-height:1;color:#d1d5db;background:none;border:none;padding:4px;transition:color .15s,transform .15s;}
+.q-star.on{color:var(--amber);}
 .q-star:active{transform:scale(1.3);}
 .q-tag{display:inline-block;background:var(--blue-l);color:var(--blue);font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:99px;margin-bottom:10px;margin-right:28px;}
-.q-text{font-size:1rem;line-height:1.85;color:var(--text);padding-right:8px;}
+.q-text{font-size:1rem;line-height:1.85;color:var(--text);padding-right:4px;}
 .q-blank{display:inline-block;border-bottom:2.5px solid var(--blue);min-width:80px;text-align:center;color:var(--blue);font-weight:700;padding:0 4px;}
+
+/* Hint */
+.hint-wrap{margin:0 12px 8px;}
+.hint-btn{width:100%;padding:10px 14px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:11px;
+  font-size:.86rem;font-weight:700;color:#0369a1;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:8px;}
+.hint-btn:active{background:#e0f2fe;}
+.hint-box{display:none;margin-top:7px;background:#e0f2fe;border-radius:10px;padding:10px 13px;
+  font-size:.84rem;line-height:1.7;color:#075985;}
 
 /* Choices */
 .choices{padding:0 12px 8px;display:flex;flex-direction:column;gap:8px;}
@@ -106,27 +107,26 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .c-btn.ok{border-color:var(--green);background:var(--green-l);}
 .c-btn.ng{border-color:var(--red);background:var(--red-l);}
 .c-btn.show-ok{border-color:var(--green);background:var(--green-l);}
-.c-btn.ok .c-key{color:var(--green);}
+.c-btn.ok .c-key,.c-btn.show-ok .c-key{color:var(--green);}
 .c-btn.ng .c-key{color:var(--red);}
-.c-btn.show-ok .c-key{color:var(--green);}
 .c-btn.ok::after{content:'✓';margin-left:auto;color:var(--green);font-weight:800;}
 .c-btn.ng::after{content:'✗';margin-left:auto;color:var(--red);font-weight:800;}
 
-/* Explanation — slides in */
-#exp-wrap{margin:0 12px 8px;border-radius:var(--radius);overflow:hidden;
-  max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease;}
-#exp-wrap.show{max-height:600px;opacity:1;}
+/* Explanation */
+#exp-wrap{margin:0 12px 8px;border-radius:var(--radius);overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease;}
+#exp-wrap.show{max-height:800px;opacity:1;}
 .exp-result{padding:12px 16px;font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:8px;}
 .exp-result.ok{background:var(--green-l);color:var(--green);}
 .exp-result.ng{background:var(--red-l);color:var(--red);}
 .exp-ans{padding:10px 16px;background:#f0f9ff;font-size:.85rem;display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;border-top:1px solid #bae6fd;}
-.exp-ans .al{font-weight:700;color:#0369a1;flex-shrink:0;}
+.exp-ans .al{font-weight:700;color:#0369a1;}
 .exp-ans .aw{font-weight:700;color:#0369a1;}
 .exp-ans .ao{color:var(--text2);font-size:.75rem;}
 .exp-body{padding:13px 16px;background:var(--amber-l);font-size:.85rem;line-height:1.8;color:#451a03;border-top:1px solid #fde68a;}
 .exp-lbl{font-size:.68rem;font-weight:700;letter-spacing:.08em;color:var(--amber);display:block;margin-bottom:5px;}
+.exp-body b{color:#92400e;font-weight:800;}
+.exp-body .ab{color:#0369a1;font-weight:800;}
 
-/* Next button */
 #btn-next-wrap{padding:4px 12px 12px;display:none;}
 #btn-next{width:100%;padding:15px;background:var(--blue);color:white;border:none;border-radius:13px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;}
 #btn-next:active{background:var(--blue-d);}
@@ -147,7 +147,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .fb-red{background:var(--red-l);color:var(--red);}
 .fb-gray{background:var(--gray-l);color:var(--text);}
 
-/* ── LIST ── */
+/* LIST */
 #list-screen{background:#f1f5f9;}
 .list-top{padding:10px 12px;background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;}
 .list-search{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;background:var(--gray-l);}
@@ -171,35 +171,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .lb-ng{background:var(--red-l);color:var(--red);}
 .lb-no{background:var(--gray-l);color:var(--text2);}
 
-
-/* Hint */
-#hint-wrap{margin:0 12px 8px;}
-#hint-btn{width:100%;padding:11px 14px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:11px;
-  font-size:.88rem;font-weight:700;color:#0369a1;cursor:pointer;font-family:inherit;text-align:left;
-  display:flex;align-items:center;gap:8px;}
-#hint-btn:active{background:#e0f2fe;}
-#hint-box{display:none;margin-top:8px;background:#e0f2fe;border-radius:10px;padding:11px 13px;
-  font-size:.85rem;line-height:1.7;color:#075985;}
-#hint-box.show{display:block;}
-/* Bold in explanation */
-.exp-body b{color:#92400e;font-weight:800;}
-.exp-body .ans-bold{color:#0369a1;font-weight:800;}
-
-
-/* Hint */
-#hint-wrap{margin:0 12px 8px;}
-#hint-btn{width:100%;padding:11px 14px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:11px;
-  font-size:.88rem;font-weight:700;color:#0369a1;cursor:pointer;font-family:inherit;text-align:left;
-  display:flex;align-items:center;gap:8px;}
-#hint-btn:active{background:#e0f2fe;}
-#hint-box{display:none;margin-top:8px;background:#e0f2fe;border-radius:10px;padding:11px 13px;
-  font-size:.85rem;line-height:1.7;color:#075985;}
-#hint-box.show{display:block;}
-/* Bold in explanation */
-.exp-body b{color:#92400e;font-weight:800;}
-.exp-body .ans-bold{color:#0369a1;font-weight:800;}
-
-/* ── STATS ── */
+/* STATS */
 #stats-screen{background:#f1f5f9;padding:14px 12px;}
 .s-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
 .s-card{background:white;border-radius:12px;padding:13px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.07);}
@@ -220,7 +192,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 <div id="hdr">
   <button id="hdr-back" onclick="goBack()">&#8592;</button>
   <span id="hdr-title">TOEIC 品詞問題</span>
-  <span id="hdr-sub"></span>
 </div>
 
 <div id="screens">
@@ -262,7 +233,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
     <div style="height:16px"></div>
   </div>
 
-  <!-- CAT DETAIL -->
+  <!-- CATEGORY DETAIL -->
   <div class="screen" id="cat-detail">
     <div class="dh">
       <div class="dh-name" id="detail-name"></div>
@@ -275,9 +246,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
   <!-- QUIZ -->
   <div class="screen" id="quiz-screen">
     <div class="qz-top">
-      <div class="qz-prog-track"><div class="qz-prog-fill" id="qz-fill" style="width:0%"></div></div>
-      <span class="qz-prog-txt" id="qz-txt">0/0</span>
-      <span class="qz-mode-badge" id="qz-mode"></span>
+      <div class="qz-track"><div class="qz-fill" id="qz-fill" style="width:0%"></div></div>
+      <span class="qz-txt" id="qz-txt">0/0</span>
+      <span class="qz-badge" id="qz-badge"></span>
     </div>
     <div class="q-card">
       <button class="q-star" id="q-star" onclick="toggleStar()">&#9734;</button>
@@ -285,20 +256,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
       <div class="q-text" id="q-text"></div>
     </div>
     <div class="choices" id="choices"></div>
-    <div id="hint-wrap">
-      <button id="hint-btn" onclick="showHint()">&#128161; ヒントを見る</button>
-      <div id="hint-box"></div>
+    <div class="hint-wrap" id="hint-wrap">
+      <button class="hint-btn" id="hint-btn" onclick="showHint()">&#128161; ヒントを見る</button>
+      <div class="hint-box" id="hint-box"></div>
     </div>
-    <div id="hint-wrap">
-      <button id="hint-btn" onclick="showHint()">&#128161; ヒントを見る</button>
-      <div id="hint-box"></div>
-    </div>
-    <div id="exp-wrap"><!-- explanation injected here --></div>
+    <div id="exp-wrap"></div>
     <div id="btn-next-wrap"><button id="btn-next" onclick="nextQ()">次の問題 &#8594;</button></div>
     <div id="btn-skip-wrap"><button id="btn-skip" onclick="skipQ()">スキップ</button></div>
     <div style="height:8px"></div>
-
-    <!-- Finish overlay -->
     <div id="finish-screen">
       <div class="fin-inner">
         <div class="fin-emoji" id="fin-e">&#127881;</div>
@@ -353,19 +318,19 @@ const PROG_KEY = 'toeic_progress_v2';
 const STAR_KEY = 'toeic_stars_v2';
 
 const GROUPS = [
-  {id:'hinshi', name:'品詞問題',      icon:'&#128221;', color:'#2563eb',
+  {id:'hinshi',name:'品詞問題',      icon:'&#128221;',color:'#2563eb',
    cats:['品詞問題・トレーニング','品詞問題・実戦問題 基本編','品詞問題・実戦問題 応用編','品詞問題・実戦問題 発展編']},
-  {id:'doshi',  name:'動詞問題',      icon:'&#127939;', color:'#16a34a',
+  {id:'doshi', name:'動詞問題',      icon:'&#127939;',color:'#16a34a',
    cats:['動詞問題・トレーニング','動詞問題・実戦問題 基本編']},
-  {id:'zen',    name:'前置詞・接続詞', icon:'&#128279;', color:'#d97706',
+  {id:'zen',   name:'前置詞・接続詞', icon:'&#128279;',color:'#d97706',
    cats:['前置詞or接続詞問題・トレーニング','前置詞or接続詞問題・実戦問題','前置詞問題・実戦問題']},
-  {id:'daim',   name:'代名詞問題',    icon:'&#128100;', color:'#7c3aed',
+  {id:'daim',  name:'代名詞問題',    icon:'&#128100;',color:'#7c3aed',
    cats:['代名詞問題・トレーニング','代名詞問題・実戦問題']},
-  {id:'kankei', name:'関係詞問題',    icon:'&#128260;', color:'#db2777',
+  {id:'kankei',name:'関係詞問題',    icon:'&#128260;',color:'#db2777',
    cats:['関係詞問題・トレーニング','関係詞問題・実戦問題']},
-  {id:'goho',   name:'語法・比較問題', icon:'&#128202;', color:'#0891b2',
+  {id:'goho',  name:'語法・比較問題', icon:'&#128202;',color:'#0891b2',
    cats:['第7章 ペア表現・語法・数・比較問題（OCR素案）']},
-  {id:'moshi',  name:'文法模試',      icon:'&#128203;', color:'#dc2626',
+  {id:'moshi', name:'文法模試',      icon:'&#128203;',color:'#dc2626',
    cats:['文法模試 セット1（OCR素案）','文法模試 セット2（OCR素案）','文法模試 セット3（OCR素案）',
          '文法模試 セット4（OCR素案）','文法模試 セット5（OCR素案）','文法模試 セット6（OCR素案）',
          '文法模試 セット7（OCR素案）','文法模試 セット8（OCR素案）','文法模試 続き（OCR素案）',
@@ -391,19 +356,37 @@ const fmtQ = t => esc(t)
 const shuffle = a => a.slice().sort(() => Math.random() - .5);
 const groupQs = g => QUESTIONS.filter(q => g.cats.includes(q.category));
 function statsFor(qs) {
-  const total = qs.length;
   const cor = qs.filter(q => progress[q.id] === 'correct').length;
   const wrg = qs.filter(q => progress[q.id] === 'wrong').length;
   const ans = cor + wrg;
-  return { total, ans, cor, wrg, rate: ans > 0 ? Math.round(cor/ans*100) : 0, pct: Math.round(cor/total*100) };
+  return { total: qs.length, ans, cor, wrg, rate: ans > 0 ? Math.round(cor/ans*100) : 0, pct: Math.round(cor/qs.length*100) };
 }
 
-// ── Smart Queue: unanswered → wrong → correct ─────────────
+// Smart queue: unanswered → wrong → correct
 function buildSmartQueue(pool) {
-  const una = shuffle(pool.filter(q => !progress[q.id]));
-  const wrg = shuffle(pool.filter(q => progress[q.id] === 'wrong'));
-  const cor = shuffle(pool.filter(q => progress[q.id] === 'correct'));
-  return [...una, ...wrg, ...cor];
+  return [
+    ...shuffle(pool.filter(q => !progress[q.id])),
+    ...shuffle(pool.filter(q => progress[q.id] === 'wrong')),
+    ...shuffle(pool.filter(q => progress[q.id] === 'correct')),
+  ];
+}
+
+// Format explanation: bold key parts
+function formatExp(text, q) {
+  let s = esc(text);
+  const aw = esc(q.answer_word);
+  if (aw) s = s.replace(aw, '<span class="ab">' + aw + '</span>');
+  s = s.replace(/\(([ABCD])\)/g, '(<b>$1</b>)');
+  s = s.replace(/「([^」]{1,30})」/g, '「<b>$1</b>」');
+  s = s.replace(/【([^】]{1,30})】/g, '【<b>$1</b>】');
+  return s;
+}
+
+// Extract hint: first sentence of explanation
+function getHint(exp) {
+  if (!exp) return '';
+  const dot = exp.indexOf('。');
+  return dot > 0 && dot < 130 ? exp.substring(0, dot + 1) : exp.substring(0, 95) + '…';
 }
 
 // ── Screen switching ─────────────────────────────────────
@@ -416,7 +399,6 @@ function switchScreen(id) {
   if (nb) nb.classList.add('active');
   curScreen = id;
   document.getElementById('hdr-back').style.display = 'none';
-  document.getElementById('hdr-sub').textContent = '';
   const titles = {home:'TOEIC 品詞問題', list:'問題一覧', stats:'成績', quiz:'問題'};
   document.getElementById('hdr-title').textContent = titles[id] || '';
   if (id === 'home')  renderHome();
@@ -439,7 +421,6 @@ function renderHome() {
   document.getElementById('hs-star').textContent = stc;
   document.getElementById('qb-wrong').textContent = wrg + '問';
   document.getElementById('qb-star').textContent  = stc + '問';
-
   const grid = document.getElementById('group-grid');
   grid.innerHTML = '';
   GROUPS.forEach(g => {
@@ -478,15 +459,14 @@ function openDetail(g) {
     const qs = QUESTIONS.filter(q => q.category === cat);
     if (!qs.length) return;
     const s = statsFor(qs);
-    const bgC = s.ans === 0 ? '#f1f5f9' : s.rate >= 80 ? '#dcfce7' : s.rate >= 60 ? '#fef9c3' : '#fee2e2';
-    const txC = s.ans === 0 ? '#6b7280' : s.rate >= 80 ? '#166534' : s.rate >= 60 ? '#854d0e' : '#991b1b';
+    const bgC = s.ans===0?'#f1f5f9':s.rate>=80?'#dcfce7':s.rate>=60?'#fef9c3':'#fee2e2';
+    const txC = s.ans===0?'#6b7280':s.rate>=80?'#166534':s.rate>=60?'#854d0e':'#991b1b';
     const el = document.createElement('div');
     el.className = 'sub-item';
     el.innerHTML =
-      '<div class="si-info"><div class="si-name">' + esc(cat) + '</div>' +
-      '<div class="si-count">' + s.total + '問・正解 ' + s.cor + '/' + s.ans + '</div></div>' +
-      '<span class="si-badge" style="background:'+bgC+';color:'+txC+'">' +
-        (s.ans === 0 ? '未学習' : s.rate + '%') + '</span>' +
+      '<div class="si-info"><div class="si-name">'+esc(cat)+'</div>' +
+      '<div class="si-count">'+s.total+'問・正解 '+s.cor+'/'+s.ans+'</div></div>' +
+      '<span class="si-badge" style="background:'+bgC+';color:'+txC+'">'+(s.ans===0?'未学習':s.rate+'%')+'</span>' +
       '<span style="color:#d1d5db">&#8250;</span>';
     el.onclick = () => launchQuiz(buildSmartQueue(qs));
     list.appendChild(el);
@@ -500,7 +480,6 @@ function startFromDetail() {
 // ── Quiz ─────────────────────────────────────────────────
 let queue = [], qIdx = 0, answered = false;
 let sesCor = 0, sesTot = 0, lastPool = [];
-// Track section boundaries for mode badge
 let unaBound = 0, wrgBound = 0;
 
 function quickStart(mode) {
@@ -508,13 +487,12 @@ function quickStart(mode) {
   if (mode === 'smart')    pool = QUESTIONS;
   else if (mode === 'wrong')   pool = QUESTIONS.filter(q => progress[q.id] === 'wrong');
   else if (mode === 'starred') pool = QUESTIONS.filter(q => stars[q.id]);
-  if (!pool || pool.length === 0) { alert('該当する問題がありません'); return; }
+  if (!pool || !pool.length) { alert('該当する問題がありません'); return; }
   launchQuiz(mode === 'smart' ? buildSmartQueue(pool) : shuffle(pool));
 }
 
 function launchQuiz(q) {
   queue = q; qIdx = 0; sesCor = 0; sesTot = 0; lastPool = q;
-  // Boundaries for mode label
   unaBound = queue.filter(x => !progress[x.id]).length;
   wrgBound = unaBound + queue.filter(x => progress[x.id] === 'wrong').length;
   document.getElementById('finish-screen').style.display = 'none';
@@ -522,40 +500,38 @@ function launchQuiz(q) {
   showQ();
 }
 
-function modeBadge() {
-  if (qIdx < unaBound)  return '未学習';
-  if (qIdx < wrgBound)  return '復習';
-  return '確認';
-}
-function modeBadgeColor() {
-  if (qIdx < unaBound)  return '';
-  if (qIdx < wrgBound)  return 'background:#fee2e2;color:#991b1b';
-  return 'background:#dcfce7;color:#166534';
-}
-
 function showQ() {
   if (qIdx >= queue.length) { showFinish(); return; }
   const q = queue[qIdx];
   answered = false;
 
+  // Reset UI
   const expWrap = document.getElementById('exp-wrap');
   expWrap.classList.remove('show');
   expWrap.innerHTML = '';
   document.getElementById('btn-next-wrap').style.display = 'none';
   document.getElementById('btn-skip-wrap').style.display = 'block';
   document.getElementById('finish-screen').style.display = 'none';
-  resetHint();
 
+  // Reset hint
+  document.getElementById('hint-wrap').style.display = '';
+  document.getElementById('hint-btn').style.display = '';
+  const hBox = document.getElementById('hint-box');
+  hBox.style.display = 'none';
+  hBox.textContent = '';
+
+  // Progress
   const pct = Math.round(qIdx / queue.length * 100);
   document.getElementById('qz-fill').style.width = pct + '%';
   document.getElementById('qz-txt').textContent = (qIdx+1) + ' / ' + queue.length;
-  const mb = document.getElementById('qz-mode');
-  mb.textContent = modeBadge();
-  mb.style.cssText = 'font-size:.68rem;padding:2px 8px;border-radius:99px;font-weight:700;white-space:nowrap;' + modeBadgeColor();
+  const badge = document.getElementById('qz-badge');
+  if (qIdx < unaBound)       { badge.textContent='未学習'; badge.style.cssText='font-size:.68rem;padding:2px 8px;border-radius:99px;font-weight:700;background:var(--blue-l);color:var(--blue)'; }
+  else if (qIdx < wrgBound)  { badge.textContent='復習';   badge.style.cssText='font-size:.68rem;padding:2px 8px;border-radius:99px;font-weight:700;background:var(--red-l);color:var(--red)'; }
+  else                       { badge.textContent='確認';   badge.style.cssText='font-size:.68rem;padding:2px 8px;border-radius:99px;font-weight:700;background:var(--green-l);color:var(--green)'; }
 
   const g = catToGroup[q.category];
-  document.getElementById('q-tag').textContent = g ? g.name : q.category;
-  document.getElementById('q-text').innerHTML  = fmtQ(q.question);
+  document.getElementById('q-tag').textContent  = g ? g.name : q.category;
+  document.getElementById('q-text').innerHTML   = fmtQ(q.question);
   renderStarBtn(q.id);
 
   const choices = document.getElementById('choices');
@@ -571,11 +547,19 @@ function showQ() {
   document.getElementById('quiz-screen').scrollTo({top:0, behavior:'smooth'});
 }
 
+function showHint() {
+  const q = queue[qIdx];
+  if (!q) return;
+  document.getElementById('hint-btn').style.display = 'none';
+  const box = document.getElementById('hint-box');
+  box.textContent = getHint(q.explanation);
+  box.style.display = 'block';
+}
+
 function checkAnswer(q, sel) {
   if (answered) return;
   answered = true;
   const ok = sel === q.answer;
-  // Wrong answers are automatically tracked for review
   progress[q.id] = ok ? 'correct' : 'wrong';
   saveProg();
   sesCor += ok ? 1 : 0;
@@ -588,32 +572,22 @@ function checkAnswer(q, sel) {
     if (key === sel && !ok) b.classList.add('ng');
   });
 
-  // Build explanation HTML
+  // Hide hint, show explanation
+  document.getElementById('hint-wrap').style.display = 'none';
+
   const expWrap = document.getElementById('exp-wrap');
   expWrap.innerHTML =
     '<div class="exp-result '+(ok?'ok':'ng')+'">'+(ok?'&#9989; 正解！':'&#10060; 不正解')+'</div>' +
-    '<div class="exp-ans">' +
-      '<span class="al">正答:</span>' +
-      '<span class="aw">('+q.answer+') '+esc(q.answer_word)+'</span>' +
-      '<span class="ao">(A)'+esc(q.A)+'&nbsp;(B)'+esc(q.B)+'&nbsp;(C)'+esc(q.C)+'&nbsp;(D)'+esc(q.D)+'</span>' +
-    '</div>' +
+    '<div class="exp-ans"><span class="al">正答:</span><span class="aw">('+q.answer+') '+esc(q.answer_word)+'</span>' +
+    '<span class="ao">(A)'+esc(q.A)+'&nbsp;(B)'+esc(q.B)+'&nbsp;(C)'+esc(q.C)+'&nbsp;(D)'+esc(q.D)+'</span></div>' +
     '<div class="exp-body"><span class="exp-lbl">&#128218; 解説</span>'+formatExp(q.explanation, q)+'</div>';
 
-  // Slide in
-  requestAnimationFrame(() => {
-    expWrap.classList.add('show');
-  });
+  requestAnimationFrame(() => expWrap.classList.add('show'));
 
-  hideHintAfterAnswer();
-  hideHintAfterAnswer();
   document.getElementById('btn-next-wrap').style.display = 'block';
   document.getElementById('btn-skip-wrap').style.display = 'none';
 
-  // Auto scroll to show explanation
-  setTimeout(() => {
-    expWrap.scrollIntoView({behavior:'smooth', block:'nearest'});
-  }, 150);
-
+  setTimeout(() => expWrap.scrollIntoView({behavior:'smooth', block:'nearest'}), 150);
   renderHome();
 }
 
@@ -632,7 +606,7 @@ function toggleStar() {
 function renderStarBtn(id) {
   const btn = document.getElementById('q-star');
   btn.innerHTML = stars[id] ? '&#9733;' : '&#9734;';
-  btn.className = 'q-star' + (stars[id] ? ' starred' : '');
+  btn.className = 'q-star' + (stars[id] ? ' on' : '');
 }
 function toggleListStar(id, el) {
   stars[id] = !stars[id];
@@ -653,10 +627,10 @@ function showFinish() {
   const ta = Object.keys(progress).length;
   const tc = Object.values(progress).filter(v=>v==='correct').length;
   document.getElementById('fin-sb').textContent =
-    '累計 ' + ta + '問回答 ・ 正解率 ' + (ta>0?Math.round(tc/ta*100):0) + '%';
+    '累計 '+ta+'問回答 ・ 正解率 '+(ta>0?Math.round(tc/ta*100):0)+'%';
   document.getElementById('btn-next-wrap').style.display = 'none';
   document.getElementById('btn-skip-wrap').style.display = 'none';
-  fin.scrollTo(0,0);
+  fin.scrollTo(0, 0);
 }
 function restartSet() {
   document.getElementById('finish-screen').style.display = 'none';
@@ -674,14 +648,14 @@ function setChip(el, f) {
 function renderList() {
   const search = (document.getElementById('list-search').value||'').toLowerCase();
   let qs = QUESTIONS;
-  if (listChip==='wrong')      qs = qs.filter(q=>progress[q.id]==='wrong');
-  else if(listChip==='starred')    qs = qs.filter(q=>stars[q.id]);
-  else if(listChip==='unanswered') qs = qs.filter(q=>!progress[q.id]);
-  else if(listChip==='correct')    qs = qs.filter(q=>progress[q.id]==='correct');
-  if (search) qs = qs.filter(q =>
+  if (listChip==='wrong')          qs = qs.filter(q=>progress[q.id]==='wrong');
+  else if (listChip==='starred')   qs = qs.filter(q=>stars[q.id]);
+  else if (listChip==='unanswered')qs = qs.filter(q=>!progress[q.id]);
+  else if (listChip==='correct')   qs = qs.filter(q=>progress[q.id]==='correct');
+  if (search) qs = qs.filter(q=>
     q.question.toLowerCase().includes(search)||q.answer_word.toLowerCase().includes(search)||
     (q.A+q.B+q.C+q.D).toLowerCase().includes(search));
-  document.getElementById('list-cnt').textContent = qs.length + '件' + (qs.length>200?' (先頭200件)':'');
+  document.getElementById('list-cnt').textContent = qs.length+'件'+(qs.length>200?' (先頭200件)':'');
   const wrap = document.getElementById('list-items');
   wrap.innerHTML = '';
   qs.slice(0,200).forEach(q => {
@@ -693,12 +667,11 @@ function renderList() {
     const el = document.createElement('div');
     el.className = 'li';
     el.innerHTML =
-      '<button class="li-star" onclick="toggleListStar('+q.id+',this)" style="color:'+(stars[q.id]?'#d97706':'#d1d5db')+'">'+(stars[q.id]?'&#9733;':'&#9734;')+'</button>' +
-      '<div class="li-body">' +
-        '<div class="li-meta"><span class="li-num">#'+q.id+'</span>' +
-          '<span class="li-cat">'+(g?g.name:esc(q.category))+'</span>'+badge+'</div>' +
-        '<div class="li-q">'+esc(q.question.substring(0,70))+'&#8230;</div>' +
-        '<div class="li-ans">正答: ('+q.answer+') '+esc(q.answer_word)+'</div>' +
+      '<button class="li-star" onclick="toggleListStar('+q.id+',this)" style="color:'+(stars[q.id]?'#d97706':'#d1d5db')+'">'+(stars[q.id]?'&#9733;':'&#9734;')+'</button>'+
+      '<div class="li-body">'+
+        '<div class="li-meta"><span class="li-num">#'+q.id+'</span><span class="li-cat">'+(g?g.name:esc(q.category))+'</span>'+badge+'</div>'+
+        '<div class="li-q">'+esc(q.question.substring(0,70))+'&#8230;</div>'+
+        '<div class="li-ans">正答: ('+q.answer+') '+esc(q.answer_word)+'</div>'+
       '</div>';
     wrap.appendChild(el);
   });
@@ -711,7 +684,7 @@ function renderStats() {
   const cor = Object.values(progress).filter(v=>v==='correct').length;
   const wrg = Object.values(progress).filter(v=>v==='wrong').length;
   const stc = Object.keys(stars).filter(k=>stars[k]).length;
-  const sc = (num,lbl,col) => '<div class="s-card"><div class="sc-num" style="color:'+col+'">'+num+'</div><div class="sc-lbl">'+lbl+'</div></div>';
+  const sc = (n,l,c) => '<div class="s-card"><div class="sc-num" style="color:'+c+'">'+n+'</div><div class="sc-lbl">'+l+'</div></div>';
   document.getElementById('s-cards').innerHTML =
     sc(tot,'総問題数','#2563eb')+sc(ans,'回答済み','#2563eb')+
     sc(cor,'正解','#16a34a')+sc(wrg,'不正解','#dc2626')+
@@ -724,7 +697,7 @@ function renderStats() {
     const el = document.createElement('div');
     el.className = 'cs-item';
     el.innerHTML =
-      '<div class="cs-hdr"><span class="cs-name">'+g.icon+' '+g.name+'</span><span class="cs-nums">'+st.cor+'/'+st.total+'問 ('+st.rate+'%)</span></div>' +
+      '<div class="cs-hdr"><span class="cs-name">'+g.icon+' '+g.name+'</span><span class="cs-nums">'+st.cor+'/'+st.total+'問 ('+st.rate+'%)</span></div>'+
       '<div class="cs-track"><div class="cs-fill" style="width:'+st.pct+'%;background:'+g.color+'"></div></div>';
     list.appendChild(el);
   });
@@ -739,107 +712,6 @@ function resetAll() {
   }
 }
 
-
-// ── Hint ─────────────────────────────────────────────────
-function getHint(explanation) {
-  if (!explanation) return '';
-  // First sentence up to 。or first 80 chars
-  const dot = explanation.indexOf('。');
-  const first = dot > 0 && dot < 120 ? explanation.substring(0, dot + 1) : explanation.substring(0, 90) + '…';
-  return first;
-}
-
-function showHint() {
-  const box = document.getElementById('hint-box');
-  box.classList.add('show');
-  document.getElementById('hint-btn').style.display = 'none';
-  // Get current question explanation
-  if (qIdx < queue.length) {
-    const q = queue[qIdx];
-    box.textContent = getHint(q.explanation);
-  }
-}
-
-function resetHint() {
-  document.getElementById('hint-btn').style.display = '';
-  document.getElementById('hint-btn').textContent = '';
-  document.getElementById('hint-btn').innerHTML = '&#128161; ヒントを見る';
-  const box = document.getElementById('hint-box');
-  box.classList.remove('show');
-  box.textContent = '';
-  document.getElementById('hint-wrap').style.display = '';
-}
-
-function hideHintAfterAnswer() {
-  document.getElementById('hint-wrap').style.display = 'none';
-}
-
-// ── Format explanation with bold ──────────────────────────
-function formatExp(text, q) {
-  let s = esc(text);
-  // Bold the answer word (first occurrence)
-  const aw = esc(q.answer_word);
-  if (aw) s = s.replace(aw, '<b class="ans-bold">' + aw + '</b>');
-  // Bold (A)(B)(C)(D) choice references
-  s = s.replace(/\(([ABCD])\)/g, '(<b>$1</b>)');
-  // Bold text in 「」
-  s = s.replace(/「([^」]{1,30})」/g, '「<b>$1</b>」');
-  // Bold text in【】
-  s = s.replace(/【([^】]{1,30})】/g, '【<b>$1</b>】');
-  return s;
-}
-
-
-// ── Hint ─────────────────────────────────────────────────
-function getHint(explanation) {
-  if (!explanation) return '';
-  // First sentence up to 。or first 80 chars
-  const dot = explanation.indexOf('。');
-  const first = dot > 0 && dot < 120 ? explanation.substring(0, dot + 1) : explanation.substring(0, 90) + '…';
-  return first;
-}
-
-function showHint() {
-  const box = document.getElementById('hint-box');
-  box.classList.add('show');
-  document.getElementById('hint-btn').style.display = 'none';
-  // Get current question explanation
-  if (qIdx < queue.length) {
-    const q = queue[qIdx];
-    box.textContent = getHint(q.explanation);
-  }
-}
-
-function resetHint() {
-  document.getElementById('hint-btn').style.display = '';
-  document.getElementById('hint-btn').textContent = '';
-  document.getElementById('hint-btn').innerHTML = '&#128161; ヒントを見る';
-  const box = document.getElementById('hint-box');
-  box.classList.remove('show');
-  box.textContent = '';
-  document.getElementById('hint-wrap').style.display = '';
-}
-
-function hideHintAfterAnswer() {
-  document.getElementById('hint-wrap').style.display = 'none';
-}
-
-// ── Format explanation with bold ──────────────────────────
-function formatExp(text, q) {
-  let s = esc(text);
-  // Bold the answer word (first occurrence)
-  const aw = esc(q.answer_word);
-  if (aw) s = s.replace(aw, '<b class="ans-bold">' + aw + '</b>');
-  // Bold (A)(B)(C)(D) choice references
-  s = s.replace(/\(([ABCD])\)/g, '(<b>$1</b>)');
-  // Bold text in 「」
-  s = s.replace(/「([^」]{1,30})」/g, '「<b>$1</b>」');
-  // Bold text in【】
-  s = s.replace(/【([^】]{1,30})】/g, '【<b>$1</b>】');
-  return s;
-}
-
-// ── Init ─────────────────────────────────────────────────
 load();
 renderHome();
 </script>
