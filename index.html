@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -189,6 +189,27 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,"Hiragino Sans",
 .cs-track{height:6px;background:var(--gray-l);border-radius:99px;overflow:hidden;}
 .cs-fill{height:100%;border-radius:99px;}
 .stats-reset{width:100%;margin-top:14px;padding:12px;background:var(--red-l);color:var(--red);border:none;border-radius:11px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;}
+#pwa-install-btn {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  z-index: 9999;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 </style>
 </head>
 <body>
@@ -718,6 +739,28 @@ function resetAll() {
 
 load();
 renderHome();
+<button id="pwa-install-btn" onclick="installPWA()">📲 アプリをインストール</button>
+<script>
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('pwa-install-btn').style.display = 'block';
+});
+window.addEventListener('appinstalled', function() {
+  document.getElementById('pwa-install-btn').style.display = 'none';
+  deferredPrompt = null;
+});
+function installPWA() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function(choice) {
+    deferredPrompt = null;
+    document.getElementById('pwa-install-btn').style.display = 'none';
+  });
+}
+</script>
+
 </script>
 
 <script>
@@ -731,3 +774,4 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
