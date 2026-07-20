@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>TOEIC 品詞問題</title>
+<link rel="manifest" href="/toeic-hinshi-app/manifest.json">
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/toeic-hinshi-app/icon-192.png">
 <style>
 :root {
   --blue:#2563eb; --blue-d:#1d4ed8; --blue-l:#eff6ff;
@@ -714,6 +718,16 @@ function resetAll() {
 
 load();
 renderHome();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/toeic-hinshi-app/sw.js')
+      .then(r => console.log('SW registered:', r.scope))
+      .catch(e => console.log('SW error:', e));
+  });
+}
 </script>
 </body>
 </html>
