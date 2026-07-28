@@ -107,13 +107,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;bac
 .exp-ok{color:#16a34a;font-weight:700}
 .exp-ng{color:#dc2626;font-weight:700}
 /* 完成文 word annotation */
-.exp-sentence{display:flex;flex-wrap:wrap;gap:6px 8px;margin:8px 0;padding:10px 12px;background:white;border-radius:10px}
-.wa{display:inline-flex;flex-direction:column;align-items:center}
-.wt{border-bottom:2px solid #2563eb;padding-bottom:1px;font-weight:600;font-size:.9rem;white-space:nowrap}
-.wt-plain{border-bottom:2px solid #cbd5e1;font-weight:400}
-.wi{font-size:.62rem;color:#1e40af;margin-top:2px;white-space:nowrap;text-align:center}
+.exp-sentence{display:flex;flex-wrap:wrap;align-items:flex-end;gap:4px 6px;margin:8px 0;padding:10px 12px;background:white;border-radius:10px;line-height:1}
+.wa{display:inline-flex;flex-direction:column;align-items:center;vertical-align:bottom}
+.wt{border-bottom:2px solid #2563eb;padding-bottom:2px;font-weight:600;font-size:.88rem;white-space:nowrap}
+.wt-plain{border-bottom:2px solid #cbd5e1;font-weight:400;color:#374151}
+.wi{font-size:.6rem;color:#1e40af;margin-top:3px;white-space:nowrap;text-align:center;min-height:1em}
 .exp-jp{font-size:.83rem;color:#475569;margin-top:6px;padding:8px 10px;background:#f0f4ff;border-radius:8px}
-#btn-next{display:none;margin:14px 14px 0;width:calc(100% - 28px);background:#2563eb;color:white;border:none;border-radius:12px;padding:14px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit}
+#btn-next{display:none;margin:14px 14px 30px;width:calc(100% - 28px);background:#2563eb;color:white;border:none;border-radius:12px;padding:16px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit}
 /* ── Progress bar ── */
 #q-prog{height:3px;background:#e2e8f0;margin-bottom:0}
 #q-prog-fill{height:3px;background:#2563eb;transition:width .3s}
@@ -527,7 +527,7 @@ function annotateSentence(sentence, wm){
     if(info&&(info.p||info.m)){
       return`<span class="wa"><span class="wt">${esc(tok)}</span><span class="wi">(${esc(info.p)}) ${esc(info.m)}</span></span>`;
     }
-    return`<span class="wa"><span class="wt wt-plain">${esc(tok)}</span></span>`;
+    return`<span class="wa"><span class="wt wt-plain">${esc(tok)}</span><span class="wi"></span></span>`;
   }).join('');
 }
 
