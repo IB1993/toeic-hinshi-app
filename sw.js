@@ -1,4 +1,4 @@
-const CACHE = 'toeic-v3';
+const CACHE = 'toeic-v4';
 const URLS  = [
   '/toeic-hinshi-app/',
   '/toeic-hinshi-app/index.html',
