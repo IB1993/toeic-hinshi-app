@@ -456,11 +456,8 @@ function showHint(){
   const exp=curQ.explanation||'';
   let hint='';
   if(exp.includes('■')){
-    const m=exp.match(/■\s*空所に入るもの
-([\s\S]*?)(?:
-■|$)/);
-    hint=m?m[1].trim().split('
-')[0]:'';
+    const m=exp.match(/■[\s\S]*?空所に入るもの[\s\S]*?\n([\s\S]*?)(?=\n■|$)/);
+    hint=m?m[1].trim().split('\n')[0]:'';
   }
   if(!hint){
     const dot=exp.indexOf('。');
